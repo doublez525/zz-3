@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>云栖海湾酒店 | 住进海风与日落</title>
+  <style>
+    :root { --ink:#18322f; --sand:#f6f1e8; --gold:#b78b55; --leaf:#315c51; }
+    * { box-sizing:border-box; } body { margin:0; color:var(--ink); font-family:"Noto Serif SC","Microsoft YaHei",serif; background:var(--sand); }
+    .hero { min-height:760px; padding:28px 7vw 110px; color:#fff; background:linear-gradient(90deg,rgba(11,35,33,.72),rgba(11,35,33,.12)),url('https://images.unsplash.com/photo-1601918774946-25832a4be0d6?auto=format&fit=crop&w=1800&q=85') center/cover; }
+    nav { display:flex; justify-content:space-between; align-items:center; gap:22px; border-bottom:1px solid rgba(255,255,255,.35); padding-bottom:20px; } .logo { font-size:22px; letter-spacing:5px; white-space:nowrap; } nav ul { display:flex; gap:28px; margin:0; padding:0; list-style:none; } nav a { color:#fff; text-decoration:none; font-size:14px; } nav a:hover, nav a:focus-visible { text-decoration:underline; text-underline-offset:5px; }
+    .hero-copy { max-width:630px; margin-top:140px; } .eyebrow { letter-spacing:4px; font-size:13px; } h1 { font-size:clamp(45px,7vw,86px); line-height:1.14; margin:18px 0; font-weight:500; } .hero-copy p { font-size:18px; line-height:1.8; }
+    .booking { display:grid; grid-template-columns:1.25fr 1fr 1fr .8fr; gap:1px; max-width:1000px; margin-top:54px; background:rgba(255,255,255,.7); color:var(--ink); } .booking label { display:block; padding:15px 20px 7px; font-size:12px; color:#65726d; } .booking input { width:100%; border:0; padding:0 20px 16px; background:transparent; color:var(--ink); font:16px inherit; } button { border:0; background:var(--gold); color:#fff; font:15px inherit; cursor:pointer; padding:18px; }
+    main { padding:95px 7vw; } .intro { display:grid; grid-template-columns:1fr 1.3fr; gap:70px; align-items:center; margin-bottom:100px; } h2 { font-size:42px; line-height:1.35; font-weight:500; margin:10px 0 20px; } .intro p, .section-head p { color:#56645e; line-height:1.9; }
+    .photo { width:100%; min-height:390px; object-fit:cover; display:block; }
+    .section-head { display:flex; align-items:end; justify-content:space-between; gap:24px; margin-bottom:30px; } .section-head h2 { margin:0; } .rooms { display:grid; grid-template-columns:repeat(3,1fr); gap:22px; } .room { background:#fff; } .room img { width:100%; aspect-ratio:1.15; object-fit:cover; display:block; } .room div { padding:20px; } .room h3 { font-size:21px; margin:0 0 8px; font-weight:500; } .room p { margin:0; color:#777; } .price { color:var(--gold); margin-top:15px!important; }
+    .experience { margin:100px -7vw -95px; padding:90px 7vw; background:var(--leaf); color:#fff; text-align:center; } .experience h2 { margin:auto; max-width:650px; } .experience p { max-width:600px; margin:20px auto 34px; line-height:1.8; color:#dce7e2; } .outline { display:inline-block; background:transparent; border:1px solid #d8c1a3; color:#fff; text-decoration:none; padding:13px 26px; } .outline:hover, .outline:focus-visible { background:rgba(255,255,255,.12); }
+    footer { background:#17352f; color:#dce7e2; padding:30px 7vw; font-size:13px; display:flex; justify-content:space-between; }
+    @media (max-width:720px) { .hero { min-height:680px; padding:22px 6vw 60px; } nav { align-items:flex-start; } nav ul { gap:14px; flex-wrap:wrap; justify-content:flex-end; } nav a { font-size:13px; } .hero-copy { margin-top:105px; } .booking,.intro,.rooms { grid-template-columns:1fr; } .booking { margin-top:35px; } main { padding:65px 6vw; } .intro { gap:28px; margin-bottom:65px; } .photo { min-height:280px; } .section-head { display:block; } .experience { margin:65px -6vw -65px; padding:65px 6vw; } footer { padding:24px 6vw; display:block; line-height:2; } }
+  </style>
+</head>
+<body>
+  <header class="hero">
+    <nav aria-label="主导航"><div class="logo">云栖海湾</div><ul><li><a href="#rooms">客房</a></li><li><a href="#experience">体验</a></li><li><a href="#contact">联系我们</a></li></ul></nav>
+    <div class="hero-copy"><div class="eyebrow">YUNXI BAY HOTEL · SANYA</div><h1>把海的声音，<br>留给每一次醒来。</h1><p>在热带花园与静谧海湾之间，享受一段只属于自己的松弛时光。</p></div>
+    <form class="booking" id="booking-form"><div><label for="destination">目的地</label><input id="destination" value="三亚 · 云栖海湾" required /></div><div><label for="checkin">入住日期</label><input id="checkin" type="date" required /></div><div><label for="checkout">离店日期</label><input id="checkout" type="date" required /></div><button type="submit">查询房态</button></form><p id="booking-status" role="status" aria-live="polite"></p>
+  </header>
+  <main>
+    <section class="intro"><div><div class="eyebrow" style="color:#b78b55">ABOUT YUNXI</div><h2>一座与自然共呼吸的海边居所</h2><p>推窗见海，漫步入园。我们以温润木石、当地风物和细致服务，安放每一段自在旅程。</p></div><img class="photo" src="https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=1100&q=80" alt="酒店泳池与棕榈树" /></section>
+    <section id="rooms"><div class="section-head"><div><div class="eyebrow" style="color:#b78b55">STAY WITH US</div><h2>为休憩留一间房</h2></div><p>每一间客房都拥有自然光与宁静的景观。</p></div><div class="rooms"><article class="room"><img src="https://images.unsplash.com/photo-1566665797739-1674de7a421a?auto=format&fit=crop&w=800&q=80" alt="花园大床房"/><div><h3>花园大床房</h3><p>45㎡ · 私享露台 · 花园景观</p><p class="price">¥1,280 起 / 晚</p></div></article><article class="room"><img src="https://images.unsplash.com/photo-1618773928121-c32242e63f39?auto=format&fit=crop&w=800&q=80" alt="海景套房"/><div><h3>海景套房</h3><p>78㎡ · 独立客厅 · 全景海湾</p><p class="price">¥2,380 起 / 晚</p></div></article><article class="room"><img src="https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&w=800&q=80" alt="云顶别墅"/><div><h3>云顶别墅</h3><p>160㎡ · 私人泳池 · 管家服务</p><p class="price">¥5,680 起 / 晚</p></div></article></div></section>
+    <section class="experience" id="experience"><div class="eyebrow">SLOW DOWN, BREATHE DEEP</div><h2>让一日三餐、一次日落，成为旅程的主角</h2><p>日出瑜伽、在地风味、植物疗愈与星空电影，等你以自己的节奏慢慢体验。</p><a class="outline" href="#contact">咨询酒店体验</a></section>
+  </main>
+  <footer id="contact"><span>云栖海湾酒店 · 海南省三亚市海棠湾</span><span>预订热线：<a href="tel:4008882026" style="color:inherit">400 888 2026</a></span></footer>
+  <script>
+    const form = document.querySelector('#booking-form');
+    const checkin = document.querySelector('#checkin');
+    const checkout = document.querySelector('#checkout');
+    const status = document.querySelector('#booking-status');
+    const today = new Date().toISOString().slice(0, 10);
+    checkin.min = today;
+    checkout.min = today;
+    checkin.addEventListener('change', () => { checkout.min = checkin.value || today; });
+    form.addEventListener('submit', (event) => {
+      event.preventDefault();
+      if (!form.reportValidity()) return;
+      if (checkout.value <= checkin.value) {
+        status.textContent = '离店日期需晚于入住日期。';
+        checkout.focus();
+        return;
+      }
+      status.textContent = '演示模式：日期已通过校验，未实际提交预订请求。';
+    });
+  </script>
+</body>
+</html>
+
