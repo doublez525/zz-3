@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#f7f5ff" />
+    <title>今日清单 · Todo List</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&family=Noto+Sans+SC:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <main class="app-shell">
+      <section class="todo-card" aria-label="待办事项">
+        <header class="header">
+          <div class="eyebrow"><span class="live-dot"></span> DAY FLOW</div>
+          <div class="title-row">
+            <div>
+              <p class="date" id="today"></p>
+              <h1>今日清单</h1>
+            </div>
+            <div class="progress-ring" id="progressRing" aria-label="完成进度"><span id="progressValue">0%</span></div>
+          </div>
+        </header>
+
+        <form class="add-task" id="taskForm">
+          <label class="sr-only" for="taskInput">添加新任务</label>
+          <input id="taskInput" maxlength="80" autocomplete="off" placeholder="接下来要完成什么？" />
+          <button class="add-button" type="submit" aria-label="添加任务">添加 <span>↵</span></button>
+        </form>
+
+        <div class="toolbar">
+          <div class="filters" role="tablist" aria-label="任务筛选">
+            <button class="filter active" type="button" data-filter="all" role="tab">全部 <span id="allCount">0</span></button>
+            <button class="filter" type="button" data-filter="active" role="tab">进行中 <span id="activeCount">0</span></button>
+            <button class="filter" type="button" data-filter="done" role="tab">已完成 <span id="doneCount">0</span></button>
+          </div>
+          <button class="clear-button" type="button" id="clearDone">清除已完成</button>
+        </div>
+
+        <ul class="task-list" id="taskList" aria-live="polite"></ul>
+
+        <div class="empty-state" id="emptyState" hidden>
+          <div class="empty-icon">✦</div>
+          <p id="encouragementTitle">这里空空如也</p>
+          <span id="encouragementText">从一件小事开始，开启专注的一天。</span>
+          <div class="encouragement-actions">
+            <button class="quote-button" type="button" id="changeEncouragement">换一句</button>
+            <button class="quote-button" type="button" id="editEncouragement">自定义</button>
+          </div>
+          <form class="custom-encouragement" id="encouragementForm" hidden>
+            <label class="sr-only" for="encouragementInput">自定义鼓励语</label>
+            <input id="encouragementInput" maxlength="50" placeholder="写一句给自己的鼓励" />
+            <button type="submit" aria-label="保存鼓励语">保存</button>
+          </form>
+        </div>
+
+        <footer class="footer">
+          <span id="summary">还没有任务</span>
+          <span>双击任务可编辑</span>
+        </footer>
+      </section>
+    </main>
+    <script src="./app.js"></script>
+  </body>
+</html>
+
