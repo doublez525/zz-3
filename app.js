@@ -36,7 +36,17 @@ function loadTasks() {
   } catch { return defaultTasks; }
 }
 
-function saveTasks() { localStorage.setItem(STORAGE_KEY, JSON.stringify(tasks)); }
+function saveTasks() {
+  try { localStorage.setItem(STORAGE_KEY, JSON.stringify(tasks)); } catch { /* persistence unavailable */ }
+}
+
+function getCustomEncouragement() {
+  try { return localStorage.getItem(ENCOURAGEMENT_KEY) || ""; } catch { return ""; }
+}
+
+function saveCustomEncouragement(text) {
+  try { localStorage.setItem(ENCOURAGEMENT_KEY, text); } catch { /* persistence unavailable */ }
+}
 
 function updateEncouragement(value) {
   const [title, text] = value;
@@ -46,7 +56,7 @@ function updateEncouragement(value) {
 
 function loadEncouragement() {
   try {
-    const custom = localStorage.getItem(ENCOURAGEMENT_KEY);
+    const custom = getCustomEncouragement();
     if (custom) return ["给自己的一句话", custom];
   } catch { /* local storage unavailable */ }
   return encouragements[0];
@@ -143,7 +153,11 @@ document.querySelectorAll(".filter").forEach((button) => {
 });
 
 function setFilterButton() {
-  document.querySelectorAll(".filter").forEach((button) => button.classList.toggle("active", button.dataset.filter === currentFilter));
+  document.querySelectorAll(".filter").forEach((button) => {
+    const isActive = button.dataset.filter === currentFilter;
+    button.classList.toggle("active", isActive);
+    button.setAttribute("aria-pressed", String(isActive));
+  });
 }
 
 document.querySelector("#clearDone").addEventListener("click", () => {
@@ -159,7 +173,7 @@ document.querySelector("#changeEncouragement").addEventListener("click", () => {
 document.querySelector("#editEncouragement").addEventListener("click", () => {
   encouragementForm.hidden = !encouragementForm.hidden;
   if (!encouragementForm.hidden) {
-    encouragementInput.value = localStorage.getItem(ENCOURAGEMENT_KEY) || "";
+    encouragementInput.value = getCustomEncouragement();
     encouragementInput.focus();
   }
 });
@@ -168,7 +182,7 @@ encouragementForm.addEventListener("submit", (event) => {
   event.preventDefault();
   const text = encouragementInput.value.trim();
   if (!text) return;
-  localStorage.setItem(ENCOURAGEMENT_KEY, text);
+  saveCustomEncouragement(text);
   updateEncouragement(["给自己的一句话", text]);
   encouragementForm.hidden = true;
 });
