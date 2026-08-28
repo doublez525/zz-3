@@ -31,10 +31,10 @@
         </form>
 
         <div class="toolbar">
-          <div class="filters" role="tablist" aria-label="任务筛选">
-            <button class="filter active" type="button" data-filter="all" role="tab">全部 <span id="allCount">0</span></button>
-            <button class="filter" type="button" data-filter="active" role="tab">进行中 <span id="activeCount">0</span></button>
-            <button class="filter" type="button" data-filter="done" role="tab">已完成 <span id="doneCount">0</span></button>
+          <div class="filters" role="group" aria-label="任务筛选">
+            <button class="filter active" type="button" data-filter="all" aria-pressed="true">全部 <span id="allCount">0</span></button>
+            <button class="filter" type="button" data-filter="active" aria-pressed="false">进行中 <span id="activeCount">0</span></button>
+            <button class="filter" type="button" data-filter="done" aria-pressed="false">已完成 <span id="doneCount">0</span></button>
           </div>
           <button class="clear-button" type="button" id="clearDone">清除已完成</button>
         </div>
